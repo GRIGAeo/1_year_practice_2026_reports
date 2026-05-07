@@ -9,14 +9,11 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xu-cheng/texlive-alpine:latest
 
     steps:
     - uses: actions/checkout@v6
-
-    - name: Install TeX Live
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-luatex texlive-fonts-recommended texlive-fonts-extra texlive-pictures fonts-freefont-otf
 
     - name: Compile reports
       run: python3 compile_reports.py
